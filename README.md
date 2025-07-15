@@ -61,4 +61,6 @@ Passionate about building fun, educational, and interactive tools.
 
 ## live link
 
+https://numberhunt1.netlify.app/
+
 
