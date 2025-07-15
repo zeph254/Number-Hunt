@@ -2,7 +2,7 @@
 
 **Number Hunt** is a fun and interactive number-guessing game built with React. Choose your difficulty, guess the number, and get real-time feedback — all wrapped in a beautiful and responsive UI!
 
-![Number Hunt Screenshot](Screenshot(4).png)
+![Number Hunt Screenshot](./public/Screenshot(4).png)
 
 ---
 
@@ -20,7 +20,7 @@
 
 | Gameplay | Win Celebration | Leaderboard |
 |---------|-----------------|-------------|
-| ![Gameplay](home.png) | ![Leaderboard](leaderboard.png) |
+| ![Gameplay](./public/home.png) | ![Leaderboard](./public/leaderboard.png) |
 
 ---
 
