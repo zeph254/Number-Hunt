@@ -1,7 +1,15 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const navItems = [
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
+    { name: 'Leaderboard', to: '/leaderboard' }
+  ];
 
   return (
     <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg">
@@ -9,9 +17,11 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           {/* Logo/Title */}
           <div className="flex items-center space-x-2">
-            <h1 className="text-white text-2xl font-bold tracking-tight hover:text-indigo-200 transition duration-300">
-              Number Hunt
-            </h1>
+            <Link to="/">
+              <h1 className="text-white text-2xl font-bold tracking-tight hover:text-indigo-200 transition duration-300">
+                Number Hunt
+              </h1>
+            </Link>
             <span className="hidden md:inline-block bg-white/20 text-xs px-2 py-1 rounded-full text-white animate-pulse">
               New Game!
             </span>
@@ -19,9 +29,15 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6">
-            <NavLink href="/">Home</NavLink>
-            <NavLink href="about">About</NavLink>
-            <NavLink href="leaderboard">Leaderboard</NavLink>
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.to}
+                className="text-white hover:text-indigo-200 font-medium transition duration-300"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -63,43 +79,19 @@ export default function Navbar() {
           }`}
         >
           <div className="flex flex-col space-y-3 px-2">
-            <MobileNavLink href="#" onClick={() => setIsOpen(false)}>
-              Home
-            </MobileNavLink>
-            <MobileNavLink href="#" onClick={() => setIsOpen(false)}>
-              About
-            </MobileNavLink>
-            <MobileNavLink href="#" onClick={() => setIsOpen(false)}>
-              Leaderboard
-            </MobileNavLink>
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.to}
+                onClick={() => setIsOpen(false)}
+                className="block px-3 py-2 rounded-md text-white hover:bg-white/10 transition duration-300"
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
     </nav>
-  );
-}
-
-// Reusable NavLink component for desktop
-function NavLink({ href, children }) {
-  return (
-    <a
-      href={href}
-      className="text-white hover:text-indigo-200 font-medium transition duration-300"
-    >
-      {children}
-    </a>
-  );
-}
-
-// Reusable MobileNavLink component
-function MobileNavLink({ href, onClick, children }) {
-  return (
-    <a
-      href={href}
-      onClick={onClick}
-      className="block px-3 py-2 rounded-md text-white hover:bg-white/10 transition duration-300"
-    >
-      {children}
-    </a>
   );
 }
